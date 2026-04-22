@@ -38,7 +38,7 @@ $ source venv/bin/activate
 ### 🔐 Required GitHub Secrets
 ```
 GCP_PROJECT_ID=gcp-project-id
-GCP_REGION=europe-west3
+GCP_REGION=europe-west1
 SERVICE_ACCOUNT_EMAIL=<NAME>@<PROJECT_ID>.iam.gserviceaccount.com
 SERVICE_NAME=chatbot-service
 WORKLOAD_IDENTITY_PROVIDER=projects/<PROJECT_NUMBER>/locations/global/workloadIdentityPools/<POOL_NAME>/providers/<PROVIDER_NAME>
@@ -58,3 +58,13 @@ $ gcloud iam workload-identity-pools providers update-oidc github-provider \
 * > Deployed on Google Cloud Run
 * > Automated via GitHub Actions CI/CD pipeline
 
+  
+## common issue:
+> update repo access to service account
+
+```
+gcloud iam service-accounts add-iam-policy-binding \
+  github-deployer@{project_id}.iam.gserviceaccount.com \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/github-pool/attribute.repository/Ranjit-Banglore/deutsch-coach-ai"
+```
