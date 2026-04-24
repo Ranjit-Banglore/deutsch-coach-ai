@@ -7,7 +7,7 @@ from llm.system_prompt import get_system_prompt
 # -----------------------
 
 st.set_page_config(
-    page_title="DeutschCoach AI 🇩🇪",
+    page_title="Berlin German  AI 🇩🇪",
     page_icon="🇩🇪",
     layout="wide"
 )
